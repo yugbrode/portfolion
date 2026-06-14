@@ -474,7 +474,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:32px 64px
   <ul class="nav-links">
     <li><a onclick="navigate('home')" id="nav-home" class="active">Home</a></li>
     <li><a onclick="navigate('about')" id="nav-about">About</a></li>
-    <li><a onclick="if(p.url){window.open(p.url,'_blank')}else{navigate('projects')}" id="nav-projects">Projects</a></li>
+    <li><a onclick="navigate('projects')" id="nav-projects">Projects</a></li>
     <li><a onclick="navigate('contact')" id="nav-contact">Contact</a></li>
   </ul>
   <div style="display:flex;gap:8px;align-items:center">
@@ -809,13 +809,6 @@ const DB = {
     {title:'IndiCov',tags:['Development','Design'],year:'2021',img:'https://devrajchatribin.com/_next/image?url=%2Fprojects%2Findicov.webp&w=800&q=75',featured:false},
     {title:'Instagram Redesign',tags:['Design'],year:'2021',img:'https://devrajchatribin.com/_next/image?url=%2Fprojects%2Finstagram-redesign.webp&w=800&q=75',featured:false},
     {title:'OnTrack',tags:['Development','Design'],year:'2020',img:'https://devrajchatribin.com/_next/image?url=%2Fprojects%2Fontrack.webp&w=800&q=75',featured:false},
-
-    {title:'KRISPRA',tags:['AI','Development'],year:'2026',img:'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200',featured:true,url:'https://krispra-6uuq.onrender.com'},
-
-    {title:'Portfolio',tags:['Design','Development'],year:'2026',img:'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200',featured:true,url:'https://portfolio-clr8.onrender.com'},
-
-    {title:'MePortfolio',tags:['Design','Development'],year:'2026',img:'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200',featured:true,url:'https://meportfolio-5rk6.onrender.com'},
-
   ],
   testimonials:[
     {name:'Vritika Naik',role:'Regional Head @GirlScript',img:'https://devrajchatribin.com/_next/image?url=%2Ftestimonials%2Fvritika-naik.webp&w=256&q=75',text:"I am amazed at Abhishek's ability to create intriguing designs. His work ethics are immaculate and his contribution spans graphic design, UI, and frontend development."},
@@ -1275,7 +1268,7 @@ renderSkills(['skills1','skills2']);
 let currentFilter='all',currentSearch='';
 
 function projectCard(p){
-  return `<div class="project-card" onclick="p.url ? window.open(p.url,'_blank') : navigate('projects')" onmousemove="tiltCard(event,this)">
+  return `<div class="project-card" onclick="navigate('projects')" onmousemove="tiltCard(event,this)">
     <div class="project-card-inner">
       <img src="${p.img}" alt="${p.title}" loading="lazy"/>
       <div class="project-card-shine"></div>
@@ -1298,7 +1291,7 @@ function tiltCard(e,card){
 }
 
 function renderFeatured(){
-  const featured=DB.projects.filter(p=>p.featured).slice(0,12);
+  const featured=DB.projects.filter(p=>p.featured).slice(0,4);
   const el=document.getElementById('featured-projects');
   if(el) el.innerHTML=featured.map(projectCard).join('');
 }
